@@ -1,7 +1,7 @@
 import Entity from './Entity';
 import { IDocumentSnapshot, ICollection } from './types/collection.types';
 import { IDocumentRef } from './types';
-import { firestore } from 'firebase/app';
+import { firestore } from 'firebase-admin';
 import { FirestoreSerializer } from './utils';
 
 export default class DocumentSnapshot <T extends Entity> implements IDocumentSnapshot<T> {
@@ -43,10 +43,4 @@ export default class DocumentSnapshot <T extends Entity> implements IDocumentSna
    * The document reference.
    */
   public get ref(): IDocumentRef<T> { return this._doc.ref; }
-
-  /**
-   * The metadata for the reference.
-   */
-  public get metadata(): firestore.SnapshotMetadata { return this._nativeSnapshot.metadata; }
-
 }

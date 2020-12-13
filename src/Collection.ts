@@ -1,4 +1,4 @@
-import { firestore } from 'firebase/app';
+import { firestore } from 'firebase-admin';
 import store, { getRepository } from './store';
 import { ICollectionQuery, ICollection, IDocumentRef, WriteTypes } from './types';
 import { QueryBuilder, FirestoreSerializer } from './utils';
@@ -125,7 +125,7 @@ class Collection <T extends Entity, P extends Entity> implements ICollection<T, 
         throw new Error(`An ID must be provided when updating ${entity.constructor.name}`);
       }
       const { id, ...data } = FirestoreSerializer.serialize(entity, WriteTypes.Update);
-      this._native.doc(id).update(data).then((): void => {
+      (id ? this._native.doc(id) : this.native.doc()).update(data).then((): void => {
         this.get(entity.id).then((updatedEntity): void => {
           resolve(updatedEntity);
         });

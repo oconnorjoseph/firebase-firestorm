@@ -1,4 +1,4 @@
-import { firestore } from 'firebase/app';
+import { firestore } from 'firebase-admin';
 import { IEntity, ICollectionQuery, ICollection, IFieldMeta } from '../types';
 
 /**

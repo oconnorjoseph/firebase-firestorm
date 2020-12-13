@@ -49,7 +49,7 @@ export default class FieldUtils {
       serialize: function (): null { return null; },
       toData: function(): null { return null; },
     };
-  };
+  }
 
   /**
    * Utility for running a processor function on a field value or array of values.
@@ -67,5 +67,5 @@ export default class FieldUtils {
     } else {
       return processSingle(fieldValue as T);
     }
-  };
+  }
 }

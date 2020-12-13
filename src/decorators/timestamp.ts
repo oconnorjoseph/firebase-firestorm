@@ -1,4 +1,4 @@
-import { firestore } from 'firebase/app';
+import { firestore } from 'firebase-admin';
 import { FieldTypes, ITimestampConfig, WriteTypes, ITimestampMeta } from '../types';
 import FieldUtils from '../utils/FieldUtils';
 import { getOrCreateRepository } from '../store';
@@ -79,7 +79,7 @@ const toData = (
 
 export default function (fieldConfig?: ITimestampConfig): Function {
   return function (target: any, key: string): void {
-    let _fieldConfig = fieldConfig || {};
+    const _fieldConfig = fieldConfig || {};
     // Configure the field.
     const type = Reflect.getMetadata('design:type', target, key);
     const field = FieldUtils.configure(
@@ -120,4 +120,4 @@ export default function (fieldConfig?: ITimestampConfig): Function {
     const repository = getOrCreateRepository(target.constructor.name);
     repository.fields.set(key, field);
   };
-};
+}

@@ -1,4 +1,4 @@
-import { firestore } from 'firebase/app';
+import { firestore } from 'firebase-admin';
 import { FieldTypes, IGeoPointConfig, IGeoPoint, GeoPointData } from '../types';
 import FieldUtils from '../utils/FieldUtils';
 import { getOrCreateRepository } from '../store';
@@ -87,4 +87,4 @@ export default function (fieldConfig?: IGeoPointConfig): Function {
     const repository = getOrCreateRepository(target.constructor.name);
     repository.fields.set(key, field);
   };
-};
+}

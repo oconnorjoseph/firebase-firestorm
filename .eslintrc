@@ -11,6 +11,7 @@
     "indent": "off",
     "@typescript-eslint/indent": ["error", 2],
     "@typescript-eslint/interface-name-prefix": 0,
-    "@typescript-eslint/no-explicit-any": 0
+    "@typescript-eslint/no-explicit-any": 0,
+    "@typescript-eslint/ban-types": 0
   }
 }

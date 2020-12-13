@@ -1,4 +1,4 @@
-import { firestore } from 'firebase/app';
+import { firestore } from 'firebase-admin';
 import Query from './Query';
 import Entity from './Entity';
 import { IQuerySnapshot, ICollection, DocumentChange } from './types';
@@ -65,11 +65,6 @@ export default class QuerySnapshot <T extends Entity> implements IQuerySnapshot<
   public get empty(): boolean { return this._nativeSnapshot.size === 0; }
 
   /**
-   * The snapshot metadata.
-   */
-  public get metadata(): firestore.SnapshotMetadata { return this._nativeSnapshot.metadata; }
-
-  /**
    * The query which resulted in the snapshot.
    */
   public get query(): Query<T> { return this._query; }
@@ -86,8 +81,8 @@ export default class QuerySnapshot <T extends Entity> implements IQuerySnapshot<
    * Returns an array of the document changes since the last snapshot.
    * @param opts Options to control what type of changes to include in the results.
    */
-  public docChanges(opts?: firestore.SnapshotListenOptions): DocumentChange<T>[] {
-    const changes = this._nativeSnapshot.docChanges(opts).map((change): DocumentChange<T> => {
+  public docChanges(): DocumentChange<T>[] {
+    const changes = this._nativeSnapshot.docChanges().map((change): DocumentChange<T> => {
       const doc = this.deserializeValue(change.doc);
       return {
         doc,

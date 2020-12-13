@@ -1,4 +1,4 @@
-import { firestore } from 'firebase/app';
+import { firestore } from 'firebase-admin';
 import { ICollectionConfig, ISubCollectionConfig, IEntity } from './collection.types';
 import { FieldConversionType } from './enum.types';
 import { IFieldMeta } from './field.types';

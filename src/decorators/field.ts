@@ -16,4 +16,4 @@ export default function (fieldConfig?: IFieldConfig): Function {
     const repository = getOrCreateRepository(target.constructor.name);
     repository.fields.set(key, field);
   };
-};
+}

@@ -1,4 +1,4 @@
-import { firestore } from 'firebase/app';
+import { firestore } from 'firebase-admin';
 import { FieldTypes, ICollection, WriteTypes } from '../types';
 import { getRepository } from '../store';
 import Entity from '../Entity';
@@ -47,14 +47,14 @@ export default class FirestoreSerializer {
     // Deserialize each of the registered fields.
     fields.forEach((value, key): void => {
       if (docData[value.name]) {
-        let k = key as keyof T;
+        const k = key as keyof T;
         deserialized[k] = value.deserialize(docData[value.name]);
       }
     });
     // Create collection references for registered subcollections.
     subcollections.forEach((value, key): void => {
       if (value.entity) {
-        let k = key as keyof T;
+        const k = key as keyof T;
         deserialized[k] = Collection(value.entity, ref);
       }
     });

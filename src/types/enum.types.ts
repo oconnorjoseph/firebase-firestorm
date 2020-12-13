@@ -3,7 +3,7 @@ export enum FieldConversionType {
   ToSnakeCase = 'toSnakeCase',
   ToKebabCase = 'toKebabCase',
   NoConversion = 'noConversion',
-};
+}
 
 export enum FieldTypes {
   Standard = 'standard',
@@ -11,11 +11,11 @@ export enum FieldTypes {
   DocumentReference = 'documentReference',
   Timestamp = 'timestamp',
   GeoPoint = 'geoPoint',
-};
+}
 
 export enum WriteTypes {
   Create,
   Update,
-};
+}
 
 

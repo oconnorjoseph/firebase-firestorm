@@ -118,4 +118,4 @@ export default function (fieldConfig: IFieldMapConfig = {}): Function {
       return toData(field.isArray, value, childRepository.fields);
     }
   };
-};
+}

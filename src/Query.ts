@@ -1,4 +1,4 @@
-import { firestore } from 'firebase/app';
+import { firestore } from 'firebase-admin';
 import { Entity } from '.';
 import { IFieldMeta, ICollection, IQuery } from './types';
 import QuerySnapshot from './QuerySnapshot';
@@ -39,7 +39,7 @@ export default class Query<T extends Entity> implements IQuery<T> {
    * @param op The operation to apply.
    * @param value The value to test for.
    */
-  public where(property: keyof T, op: firestore.WhereFilterOp, value: any): Query<T> {
+  public where(property: keyof T, op: FirebaseFirestore.WhereFilterOp, value: any): Query<T> {
     const field = this._fields.get(property as string);
     if (field) {
       return this.appendNativeQuery(this._native.where(field.name, op, value));
@@ -52,7 +52,7 @@ export default class Query<T extends Entity> implements IQuery<T> {
    * @param property The property to order by.
    * @param sort The order direction. Default value is ascending.
    */
-  public orderBy(property: keyof T, sort?: firestore.OrderByDirection): Query<T> {
+  public orderBy(property: keyof T, sort?: FirebaseFirestore.OrderByDirection): Query<T> {
     const field = this._fields.get(property as string);
     if (field) {
       return this.appendNativeQuery(this._native.orderBy(field.name, sort));
